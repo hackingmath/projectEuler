@@ -22,9 +22,10 @@ with open(file) as f:
 myList = [-340, 495, -153, -910, 835, -947]
 
 def line2pts(p1,p2):
-    #line between two points
-    if p2[0]-p1[0] == 0:
-        m = p2[0]
+    '''Returns the slope and y-intercept of
+    the line between two given points'''
+    if p2[0]-p1[0] == 0: #vertical line
+        m = 1000000 #close to infinite slope
     else:
         m = (p2[1]-p1[1])/(p2[0]-p1[0]) #slope
     b = p1[1] - m*p1[0]
@@ -65,7 +66,7 @@ def inequalities(myList):
     #opposite points, it's within the triangle.
     return output == origin
          
-
+#helpful programs from Hacking Math Class with Python
 def intersection(line1,line2):
     '''returns the intersection of
     y = ax + b and y = cx + d'''
@@ -90,13 +91,9 @@ def centroid(pt1,pt2,pt3):
     pb2 = perpBisector(pt2,pt3)
     return intersection(pb1,pb2)
 
-
-def hasOrigin(ptsList):
-    pt1 = [ptsList[0],ptsList[1]]
-    pt2 = [ptsList[2],ptsList[3]]
-    pt3 = [ptsList[4],ptsList[5]]
     
 #print(centroid((-340, 495), (-153, -910), (835, -947)))
+#unfortunately the centroid can also be outside the triangle :-(
 
 #print(inequalities([-175,41,-421,-714,574,-645]))
 
@@ -109,4 +106,4 @@ for thing in points:
 
 print("origins:",origins,"count:",count)
 
-#correct! 228 out of 1000
+#correct!
