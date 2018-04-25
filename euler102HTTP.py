@@ -9,17 +9,14 @@ points = []
 
 url = "https://projecteuler.net/project/resources/p102_triangles.txt"
 
-data = urlopen(url).readlines()#.decode('utf-8')#.split('\n')
+data = urlopen(url).readlines()
 for i,line in enumerate(data):
     
     line = line.decode('utf-8').strip().split(',')
     points.append([])
     for num in line:
-        #num = int(num)
-        #print(num,type(num))
         points[i].append(int(num))
 
-myList = [-340, 495, -153, -910, 835, -947]
 
 def line2pts(p1,p2):
     #line between two points
@@ -65,40 +62,6 @@ def inequalities(myList):
     #opposite points, it's within the triangle.
     return output == origin
          
-
-def intersection(line1,line2):
-    '''returns the intersection of
-    y = ax + b and y = cx + d'''
-    a,b,c,d = line1[0],line1[1],line2[0],line2[1]
-    x = (d - b) / (a - c)
-    y = a*x + b
-    return (x,y)
-
-def lineSlopePt(m,pt):
-    b = pt[1] - m*pt[0]
-    return m,b
-
-def perpBisector(pt1,pt2):
-    slope2pts = (pt2[1]-pt1[1])/(pt2[0]-pt1[0])
-    mdpt = [(pt2[0] + pt1[0])/2.0,
-            (pt2[1] + pt1[1])/2.0]
-    m = -1.0/slope2pts
-    return lineSlopePt(m,mdpt)
-
-def centroid(pt1,pt2,pt3):
-    pb1 = perpBisector(pt1,pt2)
-    pb2 = perpBisector(pt2,pt3)
-    return intersection(pb1,pb2)
-
-
-def hasOrigin(ptsList):
-    pt1 = [ptsList[0],ptsList[1]]
-    pt2 = [ptsList[2],ptsList[3]]
-    pt3 = [ptsList[4],ptsList[5]]
-    
-#print(centroid((-340, 495), (-153, -910), (835, -947)))
-
-#print(inequalities([-175,41,-421,-714,574,-645]))
 
 origins = 0
 count = 0
