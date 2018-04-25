@@ -109,4 +109,4 @@ for thing in points:
 
 print("origins:",origins,"count:",count)
 
-#correct! 228 out of 1000
+#correct!
