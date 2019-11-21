@@ -1,0 +1,34 @@
+"""You have to download the names.txt file from PE"""
+
+with open("names.txt") as f:
+    #lst = f.read()#.strip("'")
+    names = [str(n) for n in f.read().split(',')]
+    names.sort()
+
+    print(names[:10])
+
+alpha = '_ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+#names = ["COLIN","MARY","PATRICIA","LINDA","BARBARA","ELIZABETH",
+##         "JENNIFER","MARIA","SUSAN","MARGARET","DOROTHY",
+##         "LISA","NANCY","KAREN","BETTY","HELEN","SANDRA",
+##         "DONNA","CAROL","RUTH","SHARON","MICHELLE"]
+
+#names.sort()
+#print(names)
+
+def letter_values(name):
+    running_sum = 0
+    for letter in name:
+        if letter in alpha:
+            running_sum += alpha.index(letter)
+    return running_sum
+
+def name_values():
+    output = 0 #running sum
+    for name in names:
+        output += (letter_values(name) * (names.index(name)+1))
+    return output
+
+print(name_values())
+
